@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 class Calculator {
 
@@ -39,16 +41,22 @@ class Calculator {
     etc
      */
     int fibonacciNumberFinder(int n){
-
-        if (n > 2) {
-            return fibonacciNumberFinder(n - 1) + fibonacciNumberFinder(n - 2);
-        }
-        else if (n == 0) {
+        if (n == 0) {
             return 0;
         }
-        else {
+        else if (n == 1) {
             return 1;
         }
+
+        List<Integer> fibonacciNums = new ArrayList<>(n + 1);
+        fibonacciNums.add(0, 0);
+        fibonacciNums.add(1, 1);
+
+        for (int i = 2; i <= n; i++) {
+            fibonacciNums.add(i, fibonacciNums.get(i - 1) + fibonacciNums.get(i - 2));
+        }
+
+        return fibonacciNums.get(n);
     }
 
 
