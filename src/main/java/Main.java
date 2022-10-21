@@ -1,35 +1,44 @@
+import java.util.Scanner;
+
 public class Main {
     //Must be able to run the add, subtract, multiply, divide, fibonacciNumberFinder, and intToBinaryNumber in the terminal.
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
+        boolean goOn = true;
 
-        if (args.length == 0) {
-            System.out.println("Please enter a command:");
-        }
-        else if (args[0].equals("add")) {
-            System.out.println(calculator.add(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
-        }
-        else if (args[0].equals("subtract")) {
-            System.out.println(calculator.subtract(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
-        }
-        else if (args[0].equals("multiply")) {
-            System.out.println(calculator.multiply(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
-        }
-        else if (args[0].equals("divide")) {
-            System.out.println(calculator.divide(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
-        }
-        else if (args[0].equals("fibonacci")) {
-            System.out.println(calculator.fibonacciNumberFinder(Integer.parseInt(args[1])));
-        }
-        else if (args[0].equals("binary")) {
-            System.out.println(calculator.intToBinaryNumber(Integer.parseInt(args[1])));
-        }
-        else if (args[0].equals("exit")) {
-            System.exit(0);
-        }
-        else {
-            System.out.println("Didn't recognize that command.");
+        System.out.println("Welcome to the calculator.\nPlease enter a command:");
+
+        while (goOn) {
+            String command = scanner.next();
+
+            switch (command) {
+                case "add":
+                    System.out.println(calculator.add(scanner.nextInt(), scanner.nextInt()));
+                    break;
+                case "subtract":
+                    System.out.println(calculator.subtract(scanner.nextInt(), scanner.nextInt()));
+                    break;
+                case "multiply":
+                    System.out.println(calculator.multiply(scanner.nextInt(), scanner.nextInt()));
+                    break;
+                case "divide":
+                    System.out.println(calculator.divide(scanner.nextInt(), scanner.nextInt()));
+                    break;
+                case "fibonacci":
+                    System.out.println(calculator.fibonacciNumberFinder(scanner.nextInt()));
+                    break;
+                case "binary":
+                    System.out.println(calculator.intToBinaryNumber(scanner.nextInt()));
+                    break;
+                case "exit":
+                    goOn = false;
+                    break;
+                default:
+                    System.out.println("Didn't recognize that command.");
+                    break;
+            }
         }
     }
 }
